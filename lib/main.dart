@@ -1,9 +1,10 @@
+import 'package:adu_app/pages/login/sc_landing.dart';
 import 'package:adu_app/pages/splashscreen/splashscreen_sc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 
-import 'controller/network_controller/RootBinding.dart';
+import 'controller/network_controller/root_binding.dart';
 
 
 void main() async {
@@ -22,11 +23,7 @@ class MyApp extends StatelessWidget {
       },
       child: GetMaterialApp(
         builder: EasyLoading.init(  builder: (context, child) {
-          // Obtain the current media query information.
         final mediaQueryData = MediaQuery.of(context);
-        // Take the textScaleFactor from system and make
-        // sure that it's no less than 1.0, but no more
-        // than 1.5.
         final num constrainedTextScaleFactor =
             mediaQueryData.textScaleFactor.clamp(1.0, 1.3);
             return MediaQuery(

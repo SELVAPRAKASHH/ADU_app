@@ -2,6 +2,7 @@
 
 import 'package:adu_app/controller/network_controller/network_controller.dart';
 import 'package:adu_app/getstorage/getx_storage.dart';
+import 'package:adu_app/pages/login/sc_landing.dart';
 import 'package:adu_app/shared/my_preference.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -19,18 +20,24 @@ class SplashController extends GetxController {
   }
 
   Future _navigation() async {
-    await Future.delayed(const Duration(milliseconds: 1500), () {
+    print(checknetwork.connectionType.value);
+    await Future.delayed(const Duration(milliseconds: 2500), () {
       if (checknetwork.connectionType != 0) {
         var loginstatus = MyPreference.isLoggedIn;
         if (loginstatus == true) {
-         // Get.to(() => const HomePage());
+        print("login");
         } else {
           //Get.to(() => const LoginScreen());
+          print("no login");
+          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
+    LandingScreeen()), (Route<dynamic> route) => false);
         }
       } else {
         _networkconnectionaleart();
       }
     });
+  
+  
   }
 
   _networkconnectionaleart() {

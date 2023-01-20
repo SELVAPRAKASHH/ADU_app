@@ -13,7 +13,6 @@ class NetworkController extends GetxController{
   //Connectivity use the plugein ..check net work connection
    final Connectivity _connectivity = Connectivity();
 
-     late StreamSubscription _streamSubscription;
 
      @override
   void onInit() {
@@ -36,13 +35,16 @@ class NetworkController extends GetxController{
     switch (result) {
       case ConnectivityResult.wifi:
         connectionType.value = 1;
+        print("1 whifi");
         break;
       case ConnectivityResult.mobile:
         connectionType.value = 2;
+        print("2 mobile data");
 
         break;
       case ConnectivityResult.none:
         connectionType.value = 0;
+        print("Failed to get connection type");
         break;
       default:
       showToast("Failed to get connection type");
