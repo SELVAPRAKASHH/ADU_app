@@ -1,4 +1,4 @@
-import 'package:adu_app/controller/network_controller/network_controller.dart';
+import 'package:adu_app/network/network_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'Splashscreen_controller.dart';
@@ -40,6 +40,7 @@ class _SplashscreenState extends State<Splashscreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+           
             const CircleAvatar(
               backgroundColor: Colors.white,
               radius: 100,

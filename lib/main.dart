@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 
-import 'controller/network_controller/root_binding.dart';
-
+import 'network/root_binding.dart';
 
 void main() async {
   WidgetsFlutterBinding();
@@ -18,29 +17,34 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
-       FocusScope.of(context).requestFocus( FocusNode());
+      onTap: () {
+        FocusScope.of(context).requestFocus(FocusNode());
       },
       child: GetMaterialApp(
-        builder: EasyLoading.init(  builder: (context, child) {
-        final mediaQueryData = MediaQuery.of(context);
-        final num constrainedTextScaleFactor =
-            mediaQueryData.textScaleFactor.clamp(1.0, 1.3);
+        builder: EasyLoading.init(
+          builder: (context, child) {
+           /*  ThemeData(
+                primarySwatch: Colors.blue,
+                scaffoldBackgroundColor: Colors.white); */
+
+            final mediaQueryData = MediaQuery.of(context);
+            final num constrainedTextScaleFactor =
+                mediaQueryData.textScaleFactor.clamp(1.0, 1.3);
             return MediaQuery(
-          data: mediaQueryData.copyWith(
-            textScaleFactor: constrainedTextScaleFactor as double,
-          ),
-          child: child!,
-        );
-          
-        },),
-          debugShowCheckedModeBanner: false,
-          initialBinding: NetworkBinding(),
-          initialRoute: '/splash',
-          routes: {
-            '/splash': (_) => Splashscreen(),
+              data: mediaQueryData.copyWith(
+                textScaleFactor: constrainedTextScaleFactor as double,
+              ),
+              child: child!,
+            );
           },
-         ),
+        ),
+        debugShowCheckedModeBanner: false,
+        initialBinding: NetworkBinding(),
+        initialRoute: '/splash',
+        routes: {
+          '/splash': (_) => Splashscreen(),
+        },
+      ),
     );
   }
 }
