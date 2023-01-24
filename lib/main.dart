@@ -3,12 +3,14 @@ import 'package:adu_app/pages/splashscreen/splashscreen_sc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 import 'network/root_binding.dart';
 
 void main() async {
   WidgetsFlutterBinding();
   // await Firebase.initializeApp();
+  await GetStorage.init();
   runApp(const MyApp());
 }
 
