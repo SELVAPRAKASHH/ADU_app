@@ -102,13 +102,13 @@ class _DasboardScreenState extends State<DasboardScreen> {
             // crossAxisAlignment: CrossAxisAlignment.center,
             children: [
                Padding(
-                padding: EdgeInsets.only(top: 45, bottom: 45),
+                padding: const EdgeInsets.only(top: 45, bottom: 45),
                 child: InkWell(
                   onTap: () {
-                Get.to(() =>  Settings());
+                Get.to(() =>  const Settings());
                     
                   },
-                  child: SizedBox(
+                  child: const SizedBox(
                     // height: MediaQuery.of(context).size.height/12,
                     child: Text(
                       "DASHBOARD",
@@ -119,7 +119,7 @@ class _DasboardScreenState extends State<DasboardScreen> {
                 ),
               ),
               builddetailscard(),
-               UserOptions(),
+               const UserOptions(),
               logo()
             ],
           ),
@@ -164,14 +164,14 @@ class _DasboardScreenState extends State<DasboardScreen> {
               color: ColorConstants.hexToColor("#f0e70c"),
             ),
           ),
-          builduserdetails()
+          userdetails()
         ],
       ),
     );
   }
 
-  Widget builduserdetails() {
-    return Row(children: [information(), totalloges()]);
+  Widget userdetails() {
+    return Row(children: [userinformation(), totalloges()]);
   }
 
   Widget totalloges() {
@@ -205,7 +205,7 @@ class _DasboardScreenState extends State<DasboardScreen> {
     );
   }
 
-  Widget information() {
+  Widget userinformation() {
     return Container(
       margin: const EdgeInsets.only(left: 10, bottom: 5),
       width: MediaQuery.of(context).size.width * 0.65,

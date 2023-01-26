@@ -1,3 +1,4 @@
+import 'package:adu_app/pages/contact_us/sc_contact.dart';
 import 'package:adu_app/pages/settings/sc_settings.dart';
 import 'package:adu_app/utils/common_color.dart';
 import 'package:adu_app/utils/right_root.dart';
@@ -146,7 +147,10 @@ class _UserOptionsState extends State<UserOptions> {
                   flex: 1,
                   child: InkWell(
                     onTap: () {
-                      // Get.to(() => Settings());
+                      // Get.to(() => ContactScreen());
+                        Navigator.push(
+                          context, SlideRightRoute(page: ContactScreen()));
+                     
                     },
                     child: card(
                         top: 30,
