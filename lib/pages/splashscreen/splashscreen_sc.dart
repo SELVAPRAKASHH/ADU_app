@@ -45,15 +45,22 @@ class _SplashscreenState extends State<Splashscreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const CircleAvatar(
+                 CircleAvatar(
                   backgroundColor: Colors.white,
                   radius: 100,
                   child: Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text(
+                    padding:const EdgeInsets.all(8.0),
+                    child: Image.asset(
+                'assets/images/ADU.jpg',
+                height: MediaQuery.of(context).size.height / 3.5,
+                width:  MediaQuery.of(context).size.width / 3,
+                // fit: BoxFit.cover,
+              )
+                    
+                   /*  Text(
                       'AUD',
                       style: TextStyle(fontSize: 25, color: Colors.black),
-                    ),
+                    ), */
                   ), //Text
                 ),
                 SizedBox(

@@ -101,7 +101,9 @@ class _LoginScreenState extends State<LoginScreen> {
 
               Container(
                   margin: const EdgeInsets.only(left: 70, right: 20),
-                  child: TextFormField(
+                  child: 
+                  
+                  TextFormField(
                       controller: controller.userid,
                       validator: (value) {
                         if (value!.isEmpty) {
@@ -109,7 +111,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         }
                         return null;
                       },
-                      style: TextStyle(color: Colors.white),
+                      style: const TextStyle(color: Colors.white),
                       cursorColor: Colors.white,
                       decoration: const InputDecoration(
                           errorStyle: TextStyle(color: Colors.white),
@@ -128,10 +130,11 @@ class _LoginScreenState extends State<LoginScreen> {
                           enabledBorder: UnderlineInputBorder(
                             borderSide:
                                 BorderSide(width: 3, color: Colors.white),
-                          )))),
+                          ))
+                          )),
 
               Container(
-                  margin: EdgeInsets.only(top: 20),
+                  margin: const EdgeInsets.only(top: 20),
                   width: MediaQuery.of(context).size.width / 1.5,
                   // margin: EdgeInsets.only(left: 10),
                   alignment: Alignment.topLeft,
@@ -151,7 +154,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         }
                         return null;
                       },
-                      style: TextStyle(color: Colors.white),
+                      style: const TextStyle(color: Colors.white),
                       cursorColor: Colors.white,
                       decoration: const InputDecoration(
                           focusedErrorBorder: UnderlineInputBorder(

@@ -19,20 +19,20 @@ class Splashcontroller extends GetxController {
   }
 
   Future _navigation() async {
-    print(checknetwork.connectionType.value);
+    debugPrint(checknetwork.connectionType.value.toString());
     await Future.delayed(const Duration(milliseconds: 2500), () {
       if (checknetwork.connectionType.value != 0) {
-        print(MyPreference.isLoggedIn);
+        debugPrint(MyPreference.isLoggedIn.toString());
         if (MyPreference.isLoggedIn) {
-          print("login sddsgsfgs");
+          debugPrint("login sddsgsfgs");
           Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(builder: (context) => DasboardScreen()),
+              MaterialPageRoute(builder: (context) => const DasboardScreen()),
               (Route<dynamic> route) => false);
         } else {
           //Get.to(() => const LoginScreen());
-          print("no login fgsfgsgs");
+          debugPrint("no login fgsfgsgs");
           Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(builder: (context) => LandingScreeen()),
+              MaterialPageRoute(builder: (context) =>const LandingScreeen()),
               (Route<dynamic> route) => false);
         }
       } else {

@@ -1,4 +1,5 @@
 import 'package:adu_app/pages/contact_us/sc_contact.dart';
+import 'package:adu_app/pages/log_program/sc_log_program.dart';
 import 'package:adu_app/pages/settings/sc_settings.dart';
 import 'package:adu_app/utils/common_color.dart';
 import 'package:adu_app/utils/right_root.dart';
@@ -28,6 +29,10 @@ class _UserOptionsState extends State<UserOptions> {
                 child: InkWell(
                   onTap: () {
                     // Get.to(() => Settings());
+                     /* Navigator.push(
+                          context, SlideRightRoute(page: LogProgram())); */
+                           Navigator.push(
+                          context, SlideRightRoute(page: const LogProgram()));
                   },
                   child: card(
                       top: 30,
@@ -116,6 +121,7 @@ class _UserOptionsState extends State<UserOptions> {
             ],
           ),
         ),
+       
         SizedBox(
           height: MediaQuery.of(context).size.height / 6,
           child: Row(
@@ -125,7 +131,7 @@ class _UserOptionsState extends State<UserOptions> {
                   child: InkWell(
                     onTap: () {
                       Navigator.push(
-                          context, SlideRightRoute(page: Settings()));
+                          context, SlideRightRoute(page: const Settings()));
                       //  Get.to(() => Settings());
                       //                   Navigator.push(context,
                       // EnterExitRoute(exitPage: DasboardScreen(), enterPage: Settings()));
@@ -149,7 +155,7 @@ class _UserOptionsState extends State<UserOptions> {
                     onTap: () {
                       // Get.to(() => ContactScreen());
                         Navigator.push(
-                          context, SlideRightRoute(page: ContactScreen()));
+                          context, SlideRightRoute(page: const ContactScreen()));
                      
                     },
                     child: card(

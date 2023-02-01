@@ -1,4 +1,3 @@
-import 'dart:io';
 
 // import 'package:adu_app/pages/home/home_landing_screen.dart';
 // import 'package:adu_app/services/repository/homerepository.dart';
@@ -6,11 +5,8 @@ import 'package:adu_app/pages/home/home_landing_screen.dart';
 import 'package:adu_app/services/repository/homerepository.dart';
 import 'package:adu_app/shared/my_preference.dart';
 import 'package:device_info_plus/device_info_plus.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
-import 'package:get_storage/get_storage.dart';
 
 class Logincontroller extends GetxController {
    HomeRepository homerepo = HomeRepository();
@@ -65,14 +61,14 @@ class Logincontroller extends GetxController {
     try {
       AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
       androidid = androidInfo.id;
-      print('Running on ${androidInfo.id}');
-      print('Running on ${androidid}');
+      debugPrint('Running on ${androidInfo.id}');
+      debugPrint('Running on ${androidid}');
 
       /*   IosDeviceInfo iosInfo = await deviceInfo.iosInfo;    ---> ios
       print('Running on ${iosInfo.utsname.machine}'); */
 
     } catch (e) {
-      print(e);
+      debugPrint(e.toString());
     }
   }
 

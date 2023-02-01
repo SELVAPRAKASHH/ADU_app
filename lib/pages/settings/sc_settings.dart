@@ -1,8 +1,7 @@
 import 'package:adu_app/pages/settings/settings_controller.dart';
 import 'package:adu_app/utils/common_color.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 import 'package:get/get_state_manager/get_state_manager.dart';
 
 class Settings extends StatefulWidget {
@@ -20,7 +19,7 @@ class _SettingsState extends State<Settings> {
         backgroundColor: ColorConstants.hexToColor("#283375"),
         title: const Text(
           "SETTINGS",
-          style: TextStyle(letterSpacing: 0.5),
+          style: TextStyle(letterSpacing: 0.5,fontSize: 18),
         ),
       ),
       body: GetBuilder<SettingsController>(

@@ -1,4 +1,3 @@
-import 'package:adu_app/pages/login/sc_landing.dart';
 import 'package:adu_app/pages/splashscreen/splashscreen_sc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -6,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 import 'network/root_binding.dart';
-
+enum ConfirmAction { SUCCESS, FAILED }
 void main() async {
   WidgetsFlutterBinding();
   // await Firebase.initializeApp();
@@ -25,9 +24,11 @@ class MyApp extends StatelessWidget {
       child: GetMaterialApp(
         builder: EasyLoading.init(
           builder: (context, child) {
-           /*  ThemeData(
-                primarySwatch: Colors.blue,
-                scaffoldBackgroundColor: Colors.white); */
+            ThemeData(
+                textTheme:const TextTheme(subtitle1: TextStyle(color: Colors.grey))
+                /* primarySwatch: Colors.blue,
+                scaffoldBackgroundColor: Colors.white */
+                );
 
             final mediaQueryData = MediaQuery.of(context);
             final num constrainedTextScaleFactor =

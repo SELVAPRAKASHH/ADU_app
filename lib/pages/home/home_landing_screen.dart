@@ -1,9 +1,6 @@
 import 'package:adu_app/pages/home/home_controller.dart';
 import 'package:adu_app/pages/home/user_options.dart';
-import 'package:adu_app/pages/settings/sc_settings.dart';
-import 'package:adu_app/services/repository/homerepository.dart';
 import 'package:adu_app/utils/common_color.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -101,20 +98,14 @@ class _DasboardScreenState extends State<DasboardScreen> {
             // mainAxisAlignment: MainAxisAlignment.center,
             // crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-               Padding(
-                padding: const EdgeInsets.only(top: 45, bottom: 45),
-                child: InkWell(
-                  onTap: () {
-                Get.to(() =>  const Settings());
-                    
-                  },
-                  child: const SizedBox(
-                    // height: MediaQuery.of(context).size.height/12,
-                    child: Text(
-                      "DASHBOARD",
-                      style: TextStyle(
-                          fontSize: 20, color: Colors.white, letterSpacing: 2,fontWeight:FontWeight.bold),
-                    ),
+               const Padding(
+                padding:  EdgeInsets.only(top: 45, bottom: 45),
+                child:  SizedBox(
+                  // height: MediaQuery.of(context).size.height/12,
+                  child: Text(
+                    "DASHBOARD",
+                    style: TextStyle(
+                        fontSize: 20, color: Colors.white, letterSpacing: 2,fontWeight:FontWeight.bold),
                   ),
                 ),
               ),

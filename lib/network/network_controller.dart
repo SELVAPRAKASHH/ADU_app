@@ -26,7 +26,7 @@ class NetworkController extends GetxController{
     try {
       connectivityResult = await (_connectivity.checkConnectivity());
     } on PlatformException catch (e) {
-        print(e);
+        debugPrint(e.toString());
     }
     return _updateState(connectivityResult);
   }
@@ -35,16 +35,16 @@ class NetworkController extends GetxController{
     switch (result) {
       case ConnectivityResult.wifi:
         connectionType.value = 1;
-        print("1 whifi");
+        debugPrint("1 whifi");
         break;
       case ConnectivityResult.mobile:
         connectionType.value = 2;
-        print("2 mobile data");
+        debugPrint("2 mobile data");
 
         break;
       case ConnectivityResult.none:
         connectionType.value = 0;
-        print("Failed to get connection type");
+        debugPrint("Failed to get connection type");
         break;
       default:
       showToast("Failed to get connection type");

@@ -1,5 +1,6 @@
 import 'package:adu_app/getstorage/getx_storage.dart';
 import 'package:adu_app/network/network_controller.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 class Newsplesh extends GetxController{
@@ -9,7 +10,7 @@ class Newsplesh extends GetxController{
     @override
   void onInit() {
     //_navigation();
-    print("splesh sereen");
+    debugPrint("splesh sereen");
     super.onInit();
   }
 }

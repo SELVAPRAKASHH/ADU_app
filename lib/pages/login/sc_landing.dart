@@ -2,7 +2,6 @@ import 'package:adu_app/pages/login/sc_login.dart';
 import 'package:adu_app/utils/common_color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 import '../../network/network_controller.dart';
 
@@ -35,16 +34,23 @@ class _LandingScreeenState extends State<LandingScreeen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
                SizedBox(height: MediaQuery.of(context).size.height/10,),
-              const CircleAvatar(
+               CircleAvatar(
                 backgroundColor: Colors.white,
                 radius: 100,
                 child: Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Text(
+                  padding: const EdgeInsets.all(8.0),
+                  child:  Image.asset(
+                'assets/images/ADU.jpg',
+                height: MediaQuery.of(context).size.height / 3.5,
+                width:  MediaQuery.of(context).size.width / 3,
+                // fit: BoxFit.cover,
+              )
+                  
+                /*   Text(
                     'AUD',
                     style: TextStyle(fontSize: 25, color: Colors.black),
-                  ),
-                ), //Text
+                  ),*/
+                ),  //Text
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height / 2.5,

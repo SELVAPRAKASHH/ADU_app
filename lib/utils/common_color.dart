@@ -8,23 +8,23 @@ import 'package:flutter/material.dart';
 class ColorConstants {
   static Color getStatusBarColor() {
     String color = "#CCCCCC";
-    return new Color(int.parse(color.substring(1, 7), radix: 16) + 0xFF000000);
+    return  Color(int.parse(color.substring(1, 7), radix: 16) + 0xFF000000);
   }
 
   static Color getStatusBarColorII() {
     //String color = "#B6B6B8"; // #E5E5E5
     String color = "#6D1144";
-    return new Color(int.parse(color.substring(1, 7), radix: 16) + 0xFF000000);
+    return  Color(int.parse(color.substring(1, 7), radix: 16) + 0xFF000000);
   }
 
   static Color getRebrandStatusBarColor() {
     String color = "#12284C";
-    return new Color(int.parse(color.substring(1, 7), radix: 16) + 0xFF000000);
+    return  Color(int.parse(color.substring(1, 7), radix: 16) + 0xFF000000);
   }
 
   static Color getSplashbgColorWhite() {
     String color = "#FFFFFF";
-    return new Color(int.parse(color.substring(1, 7), radix: 16) + 0xFF000000);
+    return  Color(int.parse(color.substring(1, 7), radix: 16) + 0xFF000000);
   }
 
   static Color hexToColor(String code) {
@@ -35,18 +35,18 @@ class ColorConstants {
     // String color = "#880E4F";
     // Rebranding color
     String color = "#005E85";
-    return new Color(int.parse(color.substring(1, 7), radix: 16) + 0xFF000000);
+    return  Color(int.parse(color.substring(1, 7), radix: 16) + 0xFF000000);
   }
 
 static Color getAccentColorII() {
     String color = "#2c95b5";
-    return new Color(int.parse(color.substring(1, 7), radix: 16) + 0xFF000000);
+    return  Color(int.parse(color.substring(1, 7), radix: 16) + 0xFF000000);
 }
 
 // rebranding color
 static Color getAccentColorDark() {
     String color = "#12284C";
-    return new Color(int.parse(color.substring(1, 7), radix: 16) + 0xFF000000);
+    return  Color(int.parse(color.substring(1, 7), radix: 16) + 0xFF000000);
   }
   /*static TextStyle _textFieldHeaderTextStyle() {
     return GoogleFonts.montserrat(
@@ -60,7 +60,7 @@ static Color getAccentColorDark() {
     // String color = "#880E4F";
     // Rebranding color
     String color = "#415565";
-    return new Color(int.parse(color.substring(1, 7), radix: 16) + 0xFF000000);
+    return  Color(int.parse(color.substring(1, 7), radix: 16) + 0xFF000000);
   }
 
 }

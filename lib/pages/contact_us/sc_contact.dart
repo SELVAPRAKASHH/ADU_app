@@ -1,7 +1,6 @@
 import 'package:adu_app/utils/common_color.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 
 class ContactScreen extends StatefulWidget {
   const ContactScreen({super.key});
@@ -31,7 +30,7 @@ class _ContactScreenState extends State<ContactScreen> {
             ),
           ),
           Column(
-            children: [contactdetails(),Spacer(),logo()],
+            children: [contactdetails(),const Spacer(),logo()],
           )
         ]));
   }
@@ -55,12 +54,12 @@ class _ContactScreenState extends State<ContactScreen> {
       // height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width,
       child: Card(
-        margin: EdgeInsets.only(top: 50, left: 20, right: 20),
+        margin: const EdgeInsets.only(top: 50, left: 20, right: 20),
         color: Colors.black,
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 20, bottom: 20),
+            const Padding(
+              padding: EdgeInsets.only(top: 20, bottom: 20),
               child: Text(
                 "ADU SOFTWARE TECHNOLOGIES UK",
                 style: TextStyle(
@@ -83,7 +82,7 @@ class _ContactScreenState extends State<ContactScreen> {
                   SizedBox(
                       // color: Colors.amber,
                       width: MediaQuery.of(context).size.width * 0.70,
-                      child: Text(
+                      child: const Text(
                           "46, Roebuck Lane, Sale, Chesire, M 33 7 SH, England",
                           style: TextStyle(color: Colors.white))),
                 ],
@@ -105,7 +104,7 @@ class _ContactScreenState extends State<ContactScreen> {
                   SizedBox(
                       // color: Colors.amber,
                       width: MediaQuery.of(context).size.width * 0.70,
-                      child: Text("0161 718 5439",
+                      child: const Text("0161 718 5439",
                           style: TextStyle(color: Colors.white))),
                 ],
               ),
@@ -126,7 +125,7 @@ class _ContactScreenState extends State<ContactScreen> {
                   SizedBox(
                       // color: Colors.amber,
                       width: MediaQuery.of(context).size.width * 0.70,
-                      child: Text("adu@ntworld.net",
+                      child: const Text("adu@ntworld.net",
                           style: TextStyle(color: Colors.white))),
                 ],
               ),
