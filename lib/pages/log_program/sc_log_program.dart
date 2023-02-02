@@ -77,17 +77,14 @@ class _LogProgramState extends State<LogProgram> {
         style: TextStyle(letterSpacing: 0.5, fontSize: 18),
       ),
     );
-    return SafeArea(
-        child: Scaffold(
-            appBar: appbar,
-            body: GetBuilder<LogProgramController>(
-              init: LogProgramController(),
-              builder: (controller) {
-                return controller.isloading
-                    ? loading()
-                    : builddetails(controller);
-              },
-            )));
+    return Scaffold(
+        appBar: appbar,
+        body: GetBuilder<LogProgramController>(
+          init: LogProgramController(),
+          builder: (controller) {
+            return controller.isloading ? loading() : builddetails(controller);
+          },
+        ));
   }
 
   Widget loading() {
@@ -169,9 +166,9 @@ class _LogProgramState extends State<LogProgram> {
       onPressed: () {
         // savenotes();
         // Navigator.push(context, SlideRightRoute(page: LogsList(controller)));
-       /*  showDialog(
+        /*  showDialog(
             context: context, builder: (BuildContext context) => errorDialog); */
-            savenotesdialog();
+        savenotesdialog();
       },
       child: const Text(
         "Create New Log",
@@ -344,9 +341,7 @@ class _LogProgramState extends State<LogProgram> {
         builder: (BuildContext context) {
           return const SaveNotesDialog();
         });
-  
   }
-
 
   Dialog errorDialog = Dialog(
     shape: RoundedRectangleBorder(
