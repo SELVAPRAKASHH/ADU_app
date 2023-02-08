@@ -2,9 +2,9 @@
     package="com.example.adu_app">
     <uses-permission android:name="android.permission.INTERNET" />
    <application
-        android:label="adu_app"
+        android:label="ADU"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/airplane">
         <activity
             android:name=".MainActivity"
             android:exported="true"

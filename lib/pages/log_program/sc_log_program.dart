@@ -24,8 +24,8 @@ class _LogProgramState extends State<LogProgram> {
     "Un-Employed",
     "Retired"
   ];
-  String _currentSelectedWorkStatus = "Please Select";
-  String _currentSelectedWorkStatusPos = "0";
+  // String _currentSelectedairfieldtatus = "Please Select";
+  // String _currentSelectedairfieldPos = "0";
 
   @override
   Widget build(BuildContext context) {
@@ -140,7 +140,7 @@ class _LogProgramState extends State<LogProgram> {
           enterplacetitle(),
           placeinput(controller),
           selectairfieldtitle(),
-          buildInputWorkStatus(),
+          selectairfieldStatus(controller),
           SizedBox(height: MediaQuery.of(context).size.height / 15),
           createlogbutton(controller),
           SizedBox(height: MediaQuery.of(context).size.height / 19),
@@ -164,11 +164,17 @@ class _LogProgramState extends State<LogProgram> {
       height: MediaQuery.of(context).size.height / 20,
       color: Colors.yellow,
       onPressed: () {
+        controller.validation(
+            /*  _currentSelectedairfieldtatus, _currentSelectedairfieldPos */);
+        if (controller.valitationstatus.value == true) {
+          savenotesdialog(controller);
+        }
+
         // savenotes();
         // Navigator.push(context, SlideRightRoute(page: LogsList(controller)));
         /*  showDialog(
             context: context, builder: (BuildContext context) => errorDialog); */
-        savenotesdialog();
+        // savenotesdialog();
       },
       child: const Text(
         "Create New Log",
@@ -213,7 +219,7 @@ class _LogProgramState extends State<LogProgram> {
       child: Row(
         children: [
           Image.asset(
-            'assets/images/sync.png',
+            'assets/images/pin.png',
             height: 30,
             width: 30,
             // fit: BoxFit.cover,
@@ -237,7 +243,7 @@ class _LogProgramState extends State<LogProgram> {
       child: Row(
         children: [
           Image.asset(
-            'assets/images/sync.png',
+            'assets/images/compass.png',
             height: 30,
             width: 30,
             // fit: BoxFit.cover,
@@ -254,7 +260,7 @@ class _LogProgramState extends State<LogProgram> {
     );
   }
 
-  Widget buildInputWorkStatus() {
+  Widget selectairfieldStatus(LogProgramController controller) {
     return Container(
       margin: const EdgeInsets.only(left: 70, right: 20),
       child: FormField<String>(
@@ -274,7 +280,7 @@ class _LogProgramState extends State<LogProgram> {
                 borderSide: BorderSide(width: 3, color: Colors.white),
               ),
             ),
-            isEmpty: _currentSelectedWorkStatus == '',
+            isEmpty: controller.currentSelectedairfieldtatus.value == '',
             child: DropdownButtonHideUnderline(
               child: DropdownButton<String>(
                 selectedItemBuilder: (BuildContext context) {
@@ -292,10 +298,10 @@ class _LogProgramState extends State<LogProgram> {
                     color: Colors.deepPurple, //<-- SEE HERE
                     fontSize: 25,
                     fontWeight: FontWeight.bold),
-                value: _currentSelectedWorkStatus,
+                value: controller.currentSelectedairfieldtatus.value,
                 isDense: true,
                 onChanged: (String? newValue) {
-                  dokeepWorkStatusPos(newValue!);
+                  dokeepWorkStatusPos(newValue!, controller);
                 },
                 items: officer.map((String value) {
                   debugPrint(value);
@@ -317,29 +323,33 @@ class _LogProgramState extends State<LogProgram> {
     );
   }
 
-  void dokeepWorkStatusPos(String val) {
+  void dokeepWorkStatusPos(String val, LogProgramController controller) {
     if (val.startsWith("Full Time")) {
-      _currentSelectedWorkStatusPos = "1";
+      controller.currentSelectedairfieldPos.value = "1";
     } else if (val.startsWith("Part Time")) {
-      _currentSelectedWorkStatusPos = "2";
+      controller.currentSelectedairfieldPos.value = "2";
     } else if (val.startsWith("Self-Employed")) {
-      _currentSelectedWorkStatusPos = "3";
+      controller.currentSelectedairfieldPos.value = "3";
     } else if (val.startsWith("Un-Employed")) {
-      _currentSelectedWorkStatusPos = "4";
+      controller.currentSelectedairfieldPos.value = "4";
+    } else if (val.startsWith("Retired")) {
+      controller.currentSelectedairfieldPos.value = "5";
     } else {
-      _currentSelectedWorkStatusPos = "5";
+      controller.currentSelectedairfieldPos.value = "0";
     }
     setState(() {
-      _currentSelectedWorkStatus = val;
+      controller.currentSelectedairfieldtatus.value = val;
     });
   }
 
-  void savenotesdialog() async {
+  void savenotesdialog(LogProgramController controller) async {
     ConfirmAction? c = await showDialog<ConfirmAction>(
         barrierDismissible: false,
         context: context,
         builder: (BuildContext context) {
-          return const SaveNotesDialog();
+          return SaveNotesDialog(
+            controller: controller,
+          );
         });
   }
 

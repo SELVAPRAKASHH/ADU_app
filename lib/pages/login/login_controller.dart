@@ -1,4 +1,3 @@
-
 // import 'package:adu_app/pages/home/home_landing_screen.dart';
 // import 'package:adu_app/services/repository/homerepository.dart';
 import 'package:adu_app/pages/home/home_landing_screen.dart';
@@ -7,9 +6,11 @@ import 'package:adu_app/shared/my_preference.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 class Logincontroller extends GetxController {
-   HomeRepository homerepo = HomeRepository();
+  HomeRepository homerepo = HomeRepository();
   DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
   final userid = TextEditingController();
   final activationcode = TextEditingController();
@@ -19,13 +20,34 @@ class Logincontroller extends GetxController {
   bool isLoading = false;
   get context => Get.context;
 
+  RxBool valitationstatus = false.obs;
+
   @override
   onInit() {
     super.onInit();
     getId();
   }
 
-   login() async{
+  loginvalitation() {
+    if (userid.text.isEmpty) {
+      showtoast("Please enter the UserId");
+    } else if (activationcode.text.isEmpty) {
+      showtoast("Please enter Activation code");
+    } else {
+      valitationstatus.value = true;
+    }
+  }
+
+  showtoast(String msg) {
+    showTopSnackBar(
+      Overlay.of(context)!,
+      CustomSnackBar.error(
+        message: msg,
+      ),
+    );
+  }
+
+  login() async {
     /* MyPreference.setCustomerLogin(true);
     print(MyPreference.isLoggedIn);
      Navigator.of(context).pushAndRemoveUntil(
@@ -33,7 +55,6 @@ class Logincontroller extends GetxController {
           (Route<dynamic> route) => false); */
     // MyPreference.setCustomerLogin(true);
 
-    
     isLoading = true;
     update();
 
@@ -45,15 +66,14 @@ class Logincontroller extends GetxController {
     if (response == "ok") {
       isLoading = false;
       update();
-     MyPreference.setCustomerLogin(true);
+      MyPreference.setCustomerLogin(true);
       Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(builder: (context) => const DasboardScreen()),
           (Route<dynamic> route) => false);
     } else {
-       isLoading = false;
+      isLoading = false;
       update();
       erroraleart(response);
-
     }
   }
 
@@ -72,8 +92,7 @@ class Logincontroller extends GetxController {
     }
   }
 
-    erroraleart(String errormsg){
-
+  erroraleart(String errormsg) {
     return showDialog<void>(
       context: context,
       barrierDismissible: false, // user must tap button!
@@ -82,7 +101,7 @@ class Logincontroller extends GetxController {
           title: const Text('Alert!'),
           content: SingleChildScrollView(
             child: ListBody(
-              children:  <Widget>[
+              children: <Widget>[
                 Text(errormsg),
               ],
             ),
@@ -101,8 +120,5 @@ class Logincontroller extends GetxController {
         );
       },
     );
- 
-    }
-
-
+  }
 }

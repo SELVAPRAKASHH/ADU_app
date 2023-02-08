@@ -101,16 +101,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
               Container(
                   margin: const EdgeInsets.only(left: 70, right: 20),
-                  child: 
-                  
-                  TextFormField(
+                  child: TextField(
                       controller: controller.userid,
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return "Please enter User ID";
-                        }
-                        return null;
-                      },
                       style: const TextStyle(color: Colors.white),
                       cursorColor: Colors.white,
                       decoration: const InputDecoration(
@@ -130,8 +122,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           enabledBorder: UnderlineInputBorder(
                             borderSide:
                                 BorderSide(width: 3, color: Colors.white),
-                          ))
-                          )),
+                          )))),
 
               Container(
                   margin: const EdgeInsets.only(top: 20),
@@ -146,14 +137,14 @@ class _LoginScreenState extends State<LoginScreen> {
 
               Container(
                   margin: const EdgeInsets.only(left: 70, right: 20),
-                  child: TextFormField(
+                  child: TextField(
                       controller: controller.activationcode,
-                      validator: (value) {
+                      /*  validator: (value) {
                         if (value!.isEmpty) {
                           return "Please enter Activation code";
                         }
                         return null;
-                      },
+                      }, */
                       style: const TextStyle(color: Colors.white),
                       cursorColor: Colors.white,
                       decoration: const InputDecoration(
@@ -181,7 +172,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
               InkWell(
                 onTap: () {
-                  if (_formKey.currentState!.validate()) {
+                  controller.loginvalitation();
+                  if (controller.valitationstatus.value == true) {
                     controller.login();
                   }
                 },
