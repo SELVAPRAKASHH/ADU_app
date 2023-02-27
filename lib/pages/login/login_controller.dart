@@ -63,13 +63,13 @@ class Logincontroller extends GetxController {
         userid: userid.text,
         deviceid: androidid);
 
-    if (response == "ok") {
+    if (response == "ook") {
       isLoading = false;
       update();
-      MyPreference.setCustomerLogin(true);
+      /* MyPreference.setCustomerLogin(true);
       Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(builder: (context) => const DasboardScreen()),
-          (Route<dynamic> route) => false);
+          (Route<dynamic> route) => false); */
     } else {
       isLoading = false;
       update();

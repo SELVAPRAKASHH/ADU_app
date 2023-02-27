@@ -1,110 +1,106 @@
-import 'package:adu_app/pages/login/login_controller.dart';
-import 'package:adu_app/pages/register/register_screen.dart';
+import 'package:adu_app/pages/register/register_controller.dart';
 import 'package:adu_app/utils/common_color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-final _formKey = GlobalKey<FormState>();
-// final controller = Get.put(Logincontroller());
-
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<Logincontroller>(
-        init: Logincontroller(),
-        builder: (controller) {
-          return Scaffold(
-              body: Stack(children: [
-            SizedBox(
-                width: double.infinity,
-                height: double.infinity,
-                // color: Colors.blue,
-                child: Image.asset(
-                  'assets/images/flash_sc.jpg',
-                  fit: BoxFit.cover,
-                )),
-            controller.isLoading == false
-                ? buildlogin(controller)
-                : buildLoadingText()
-          ]));
-        });
+    AppBar appBar = AppBar(
+        centerTitle: false,
+        backgroundColor: ColorConstants.hexToColor("#283375"),
+        title: const Text(
+          "Register",
+          style: TextStyle(letterSpacing: 1),
+        )
+/*           Image.asset(
+        'assets/images/appbar_logo.png',
+        width: MediaQuery.of(context).size.width * 0.25,
+        height: 35,
+      ), */
+        );
+    return Scaffold(
+        appBar: appBar,
+        // body: Container(),
+        body: GetBuilder<RegisterController>(
+          init: RegisterController(),
+          builder: (controller) {
+            return controller.isLoading ? loading() : builddetails(controller);
+          },
+        ));
   }
 
-  buildLoadingText() {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height,
-      width: MediaQuery.of(context).size.width,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
-          Center(
-            child: CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-            ),
-          ),
-          SizedBox(
-            height: 15,
-          ),
-          Text('Please wait ...',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  letterSpacing: 0.4,
-                  color: Colors.white,
-                  fontSize: 16.0,
-                  fontFamily: "Montserrat-Medium")),
-        ],
+  Widget loading() {
+    return Stack(children: [
+      SizedBox(
+        width: double.infinity,
+        height: double.infinity,
+        child: Image.asset(
+          'assets/images/flash_sc.jpg',
+          fit: BoxFit.cover,
+        ),
       ),
-    );
+      Center(
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: const [
+          CircularProgressIndicator(
+            color: Colors.white,
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: 15),
+            child: Text(
+              "Please Wait...",
+              style: TextStyle(color: Colors.white, fontSize: 16),
+            ),
+          )
+        ],
+      ))
+    ]);
   }
 
-  buildlogin(Logincontroller controller) {
-    return SingleChildScrollView(
-      child: Center(
-        child: Form(
-          key: _formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+  Widget builddetails(RegisterController controller) {
+    return Stack(children: [
+      SizedBox(
+        width: double.infinity,
+        height: double.infinity,
+        child: Image.asset(
+          'assets/images/flash_sc.jpg',
+          fit: BoxFit.cover,
+        ),
+      ),
+      //  padding: const EdgeInsets.only(left:30.0,right: 10),
+      SingleChildScrollView(
+          child: Center(
+        child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(
-                height: MediaQuery.of(context).size.height / 10,
-              ),
-              CircleAvatar(
-                backgroundColor: Colors.white,
-                radius: 100,
-                child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Image.asset(
-                      'assets/images/ADU.jpg',
-                      height: MediaQuery.of(context).size.height / 3.5,
-                      width: MediaQuery.of(context).size.width / 3,
-                      // fit: BoxFit.cover,
-                    )), //Text
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height / 4,
+                height: MediaQuery.of(context).size.height / 3,
               ),
               Container(
                   width: MediaQuery.of(context).size.width / 1.5,
-                  // margin: EdgeInsets.only(left: 10),
+                  // margin: EdgeInsets.only(left: 30),
                   alignment: Alignment.topLeft,
                   child: const Text(
-                    "Enter your user ID",
+                    "First Name",
                     style: TextStyle(
                         color: Colors.white, fontSize: 16, letterSpacing: 0.5),
                   )),
-
               Container(
-                  margin: const EdgeInsets.only(left: 70, right: 20),
+                  margin:
+                      const EdgeInsets.only(left: 70, right: 20, bottom: 20),
                   child: TextField(
-                      controller: controller.userid,
+                      controller: controller.firstname,
                       style: const TextStyle(color: Colors.white),
                       cursorColor: Colors.white,
                       decoration: const InputDecoration(
@@ -125,36 +121,28 @@ class _LoginScreenState extends State<LoginScreen> {
                             borderSide:
                                 BorderSide(width: 3, color: Colors.white),
                           )))),
-
               Container(
-                  margin: const EdgeInsets.only(top: 20),
                   width: MediaQuery.of(context).size.width / 1.5,
-                  // margin: EdgeInsets.only(left: 10),
+                  // margin: EdgeInsets.only(left: 30),
                   alignment: Alignment.topLeft,
                   child: const Text(
-                    "Enter your Activation code",
+                    "Last Name",
                     style: TextStyle(
                         color: Colors.white, fontSize: 16, letterSpacing: 0.5),
                   )),
-
               Container(
-                  margin: const EdgeInsets.only(left: 70, right: 20),
+                  margin:
+                      const EdgeInsets.only(left: 70, right: 20, bottom: 20),
                   child: TextField(
-                      controller: controller.activationcode,
-                      /*  validator: (value) {
-                        if (value!.isEmpty) {
-                          return "Please enter Activation code";
-                        }
-                        return null;
-                      }, */
+                      controller: controller.lastname,
                       style: const TextStyle(color: Colors.white),
                       cursorColor: Colors.white,
                       decoration: const InputDecoration(
+                          errorStyle: TextStyle(color: Colors.white),
                           focusedErrorBorder: UnderlineInputBorder(
                             borderSide:
                                 BorderSide(width: 3, color: Colors.white),
                           ),
-                          errorStyle: TextStyle(color: Colors.white),
                           errorBorder: UnderlineInputBorder(
                             borderSide:
                                 BorderSide(width: 3, color: Colors.white),
@@ -167,17 +155,47 @@ class _LoginScreenState extends State<LoginScreen> {
                             borderSide:
                                 BorderSide(width: 3, color: Colors.white),
                           )))),
-
-              SizedBox(
-                height: MediaQuery.of(context).size.height / 16,
-              ),
-
+              Container(
+                  width: MediaQuery.of(context).size.width / 1.5,
+                  // margin: EdgeInsets.only(left: 30),
+                  alignment: Alignment.topLeft,
+                  child: const Text(
+                    "Email Address",
+                    style: TextStyle(
+                        color: Colors.white, fontSize: 16, letterSpacing: 0.5),
+                  )),
+              Container(
+                  margin:
+                      const EdgeInsets.only(left: 70, right: 20, bottom: 35),
+                  child: TextField(
+                      controller: controller.email,
+                      style: const TextStyle(color: Colors.white),
+                      cursorColor: Colors.white,
+                      decoration: const InputDecoration(
+                          errorStyle: TextStyle(color: Colors.white),
+                          focusedErrorBorder: UnderlineInputBorder(
+                            borderSide:
+                                BorderSide(width: 3, color: Colors.white),
+                          ),
+                          errorBorder: UnderlineInputBorder(
+                            borderSide:
+                                BorderSide(width: 3, color: Colors.white),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide:
+                                BorderSide(width: 3, color: Colors.white),
+                          ),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide:
+                                BorderSide(width: 3, color: Colors.white),
+                          )))),
               InkWell(
                 onTap: () {
                   controller.loginvalitation();
+                  /* controller.loginvalitation();
                   if (controller.valitationstatus.value == true) {
                     controller.login();
-                  }
+                  } */
                 },
                 child: Container(
                   alignment: Alignment.center,
@@ -188,7 +206,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: MediaQuery.of(context).size.height / 17,
                   width: MediaQuery.of(context).size.width / 1.8,
                   child: const Text(
-                    "LOG IN",
+                    "Register",
                     style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w600,
@@ -197,14 +215,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
               ),
-              //Expanded(child: Text("button"))
-
               siginoption()
-            ],
-          ),
-        ),
-      ),
-    );
+            ]),
+      ))
+    ]);
   }
 
   Widget siginoption() {
@@ -216,14 +230,14 @@ class _LoginScreenState extends State<LoginScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Text(
-            "Don't Have An Account? ",
+            "Already Have An Account? ",
             style: TextStyle(color: Colors.white, fontSize: 15),
           ),
           InkWell(
             onTap: () {
-              Get.to(RegisterScreen());
+              Get.back();
             },
-            child: Text("SignUp",
+            child: Text("Signi n",
                 style: TextStyle(
                   color: Colors.blue.shade200,
                   fontSize: 16,

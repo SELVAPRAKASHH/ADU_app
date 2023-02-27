@@ -2,6 +2,8 @@ import 'package:adu_app/pages/contact_us/sc_contact.dart';
 import 'package:adu_app/pages/log_program/sc_log_program.dart';
 import 'package:adu_app/pages/online_search/sc_online_search.dart';
 import 'package:adu_app/pages/settings/sc_settings.dart';
+import 'package:adu_app/pages/splashscreen/splashscreen_sc.dart';
+import 'package:adu_app/shared/utilits.dart';
 import 'package:adu_app/utils/common_color.dart';
 import 'package:adu_app/utils/right_root.dart';
 import 'package:flutter/material.dart';
@@ -29,11 +31,15 @@ class _UserOptionsState extends State<UserOptions> {
                 flex: 1,
                 child: InkWell(
                   onTap: () {
+                    Utils.setLogout();
+                    Navigator.of(context).pushAndRemoveUntil(
+                        MaterialPageRoute(builder: (context) => Splashscreen()),
+                        (Route<dynamic> route) => false);
                     // Get.to(() => Settings());
-                     /* Navigator.push(
+                    /* Navigator.push(
                           context, SlideRightRoute(page: LogProgram())); */
-                           Navigator.push(
-                          context, SlideRightRoute(page: const LogProgram()));
+                    //  Navigator.push(
+                    // context, SlideRightRoute(page: const LogProgram()));
                   },
                   child: card(
                       top: 30,
@@ -56,7 +62,7 @@ class _UserOptionsState extends State<UserOptions> {
                   onTap: () {
                     // Get.to(() => Settings());OnlineSearch
                     Navigator.push(
-                          context, SlideRightRoute(page: const OnlineSearch()));
+                        context, SlideRightRoute(page: const OnlineSearch()));
                   },
                   child: card(
                       top: 30,
@@ -124,7 +130,6 @@ class _UserOptionsState extends State<UserOptions> {
             ],
           ),
         ),
-       
         SizedBox(
           height: MediaQuery.of(context).size.height / 6,
           child: Row(
@@ -157,9 +162,8 @@ class _UserOptionsState extends State<UserOptions> {
                   child: InkWell(
                     onTap: () {
                       // Get.to(() => ContactScreen());
-                        Navigator.push(
-                          context, SlideRightRoute(page: const ContactScreen()));
-                     
+                      Navigator.push(context,
+                          SlideRightRoute(page: const ContactScreen()));
                     },
                     child: card(
                         top: 30,
